@@ -5,7 +5,7 @@
 ** Login   <fantin.bibas@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Apr  3 13:30:17 2017 Fantin Bibas
-** Last update Mon Apr  3 14:55:41 2017 Fantin Bibas
+** Last update Mon Apr  3 18:14:00 2017 Fantin Bibas
 */
 
 #ifndef	LIBLKL_H_
@@ -29,9 +29,12 @@ struct		s_lklist
 {
   t_lklelem	*list;
   t_lklFuncMod	append;
-  t_lklFuncElem	elem;
+  t_lklFuncElem	get;
 };
 
+void		*lklElem(int, t_lklist *);
+t_lklist	*lklCreate();
+t_lklelem	*lklLast(t_lklist *);
 t_lklist	*lklAppend(void *, t_lklist *);
 
 #endif /* !LIBLKL_H_ */

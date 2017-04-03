@@ -5,7 +5,7 @@
 ## Login   <fantin.bibas@epitech.eu@epitech.net>
 ## 
 ## Started on  Mon Apr  3 14:21:15 2017 Fantin Bibas
-## Last update Mon Apr  3 14:21:21 2017 Fantin Bibas
+## Last update Mon Apr  3 17:53:25 2017 Fantin Bibas
 ##
 
 CC	=	gcc
@@ -20,7 +20,10 @@ FLAGS	=	rc
 
 CPPFLAGS =	 -c -I./include/
 
-SRCS	=	src/main.c
+SRCS	=	src/lklAppend.c	\
+		src/lklCreate.c	\
+		src/lklElem.c	\
+		src/lklLast.c
 
 OBJDIR	=	objs
 
