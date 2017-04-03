@@ -5,7 +5,7 @@
 ** Login   <fantin.bibas@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Apr  3 17:46:33 2017 Fantin Bibas
-** Last update Mon Apr  3 19:38:38 2017 Fantin Bibas
+** Last update Mon Apr  3 21:49:54 2017 Fantin Bibas
 */
 
 #include <stdlib.h>
@@ -22,6 +22,9 @@ t_lklist	*lklCreate()
   list->getPtr = lklElemPtr;
   list->len = lklLen;
   list->reverse = lklReverse;
+  list->delete = lklDelete;
+  list->extend = lklExtend;
+  list->destroy = lklDestroy;
   list->list = NULL;
   return (list);
 }

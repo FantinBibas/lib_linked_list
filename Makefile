@@ -5,7 +5,7 @@
 ## Login   <fantin.bibas@epitech.eu@epitech.net>
 ## 
 ## Started on  Mon Apr  3 14:21:15 2017 Fantin Bibas
-## Last update Mon Apr  3 19:40:46 2017 Fantin Bibas
+## Last update Mon Apr  3 21:55:05 2017 Fantin Bibas
 ##
 
 CC	=	gcc
@@ -22,8 +22,11 @@ CPPFLAGS =	 -c -I./include/
 
 SRCS	=	src/lklAppend.c		\
 		src/lklCreate.c		\
+		src/lklDelete.c		\
+		src/lklDestroy.c	\
 		src/lklElem.c		\
 		src/lklElemPtr.c	\
+		src/lklExtend.c		\
 		src/lklLast.c		\
 		src/lklLen.c		\
 		src/lklReverse.c

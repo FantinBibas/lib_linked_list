@@ -5,7 +5,7 @@
 ** Login   <fantin.bibas@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Apr  3 13:30:17 2017 Fantin Bibas
-** Last update Mon Apr  3 19:41:37 2017 Fantin Bibas
+** Last update Mon Apr  3 21:51:43 2017 Fantin Bibas
 */
 
 #ifndef	LIBLKL_H_
@@ -18,7 +18,9 @@ typedef t_lklist	*(*t_lklFuncMod)(void *, t_lklist *);
 typedef void		*(*t_lklFuncElem)(int, t_lklist *);
 typedef void		**(*t_lklFuncElemPtr)(int, t_lklist *);
 typedef t_lklist	*(*t_lklFuncList)(t_lklist *);
+typedef t_lklist	*(*t_lklFuncExt)(t_lklist *, t_lklist *);
 typedef int		(*t_lklFunc)(t_lklist *);
+typedef void		(*t_lklFuncDest)(t_lklist *);
 
 struct		s_lklelem
 {
@@ -35,6 +37,9 @@ struct			s_lklist
   t_lklFuncElemPtr     	getPtr;
   t_lklFuncList		reverse;
   t_lklFunc		len;
+  t_lklFuncElem		delete;
+  t_lklFuncExt		extend;
+  t_lklFuncDest		destroy;
 };
 
 t_lklist	*lklAppend(void *elem, t_lklist *list);
@@ -56,7 +61,8 @@ t_lklist	*lklCreate();
 
 void		*lklElem(int idx, t_lklist *list);
 /************************\
-|* Get an element in the list.
+|* Get an element in the list. If the index is negative it
+|* return the element at position listLen - index.
 |*
 |* idx		The index of the element to get
 |* list		The t_tklist
@@ -66,7 +72,8 @@ void		*lklElem(int idx, t_lklist *list);
 
 void		**lklElemPtr(int idx, t_lklist *list);
 /************************\
-|* Get apointer to an element in the list.
+|* Get apointer to an element in the list. If the index is
+|* negative it return the element at position listLen - index.
 |*
 |* idx		The index of the element to get
 |* list		The t_tklist
@@ -99,6 +106,38 @@ t_lklist	*lklReverse(t_lklist *list);
 |* list		The t_tklist
 |*
 |* Return NULL in case of error, the t_lklist otherwise.
+\************************/
+
+void		*lklDelete(int idx, t_lklist *list);
+/************************\
+|* Delete an element in the list and return it. If the index
+|* is negative it delete and return the element at position
+|* listLen - index.
+|*
+|* idx		The index of the element to delete
+|* list		The t_tklist
+|*
+|* Return NULL in case of problem, the element otherwise.
+\************************/
+
+t_lklist	*lklExtend(t_lklist *listA, t_lklist *listB);
+/************************\
+|* Merge two list together and destroy the second one.
+|*
+|* listA	The first t_lklist "object"
+|* listB	The second t_lklist "object"
+|*
+|* Return NULL if both of the lists are NULL, the merged list
+|* otherwise.
+\************************/
+
+void		lklDestroy(t_lklist *list);
+/************************\
+|* Destroy a list.
+|*
+|* list		The t_lklist "object" to be destroyed
+|*
+|* Returns nothing
 \************************/
 
 #endif /* !LIBLKL_H_ */
