@@ -5,7 +5,7 @@
 ## Login   <fantin.bibas@epitech.eu@epitech.net>
 ## 
 ## Started on  Mon Apr  3 14:21:15 2017 Fantin Bibas
-## Last update Tue Apr  4 16:00:19 2017 Fantin Bibas
+## Last update Tue Apr  4 17:20:45 2017 Fantin Bibas
 ##
 
 CC	=	gcc
@@ -20,18 +20,20 @@ FLAGS	=	rc
 
 CPPFLAGS =	 -c -I./include/
 
-SRCS	=	src/lklAppend.c		\
-		src/lklCreate.c		\
-		src/lklDelete.c		\
-		src/lklDestroy.c	\
-		src/lklElem.c		\
-		src/lklElemPtr.c	\
-		src/lklExtend.c		\
-		src/lklLast.c		\
-		src/lklLen.c		\
-		src/lklReverse.c	\
-		src/lklSort.c		\
-		src/lklSortFuncs.c
+SRCS	=	src/lklAppend.c				\
+		src/lklCreate.c				\
+		src/lklDelete.c				\
+		src/lklDestroy.c			\
+		src/lklElem.c				\
+		src/lklElemPtr.c			\
+		src/lklExtend.c				\
+		src/lklLast.c				\
+		src/lklLen.c				\
+		src/lklMap.c				\
+		src/lklReverse.c			\
+		src/lklSort.c				\
+		src/utils/lklMapFuncs/lklMapStr.c	\
+		src/utils/lklSortFuncs/lklSortFuncs.c
 
 OBJDIR	=	objs
 

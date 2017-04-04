@@ -5,7 +5,7 @@
 ** Login   <fantin.bibas@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Apr  3 13:30:17 2017 Fantin Bibas
-** Last update Tue Apr  4 15:59:20 2017 Fantin Bibas
+** Last update Tue Apr  4 17:39:49 2017 Fantin Bibas
 */
 
 #ifndef	LIBLKL_H_
@@ -20,9 +20,11 @@ typedef void		**(*t_lklFuncElemPtr)(int, t_lklist *);
 typedef t_lklist	*(*t_lklFuncList)(t_lklist *);
 typedef int		(*t_lklFunc)(t_lklist *);
 typedef t_lklist	*(*t_lklFuncExt)(t_lklist *, t_lklist *);
+typedef void		*(*t_lklFuncMapProt)(void *, int);
 typedef int		(*t_lklFuncCmp)(void *, void *);
 typedef void		(*t_lklFuncDest)(t_lklist *);
 typedef t_lklist	*(*t_lklFuncSort)(t_lklist *, t_lklFuncCmp);
+typedef t_lklist	*(*t_lklFuncMap)(t_lklist *, t_lklFuncMapProt, int);
 
 struct		s_lklelem
 {
@@ -43,6 +45,7 @@ struct			s_lklist
   t_lklFuncExt		extend;
   t_lklFuncDest		destroy;
   t_lklFuncSort		sort;
+  t_lklFuncMap		map;
 };
 
 t_lklist	*lklAppend(void *elem, t_lklist *list);
@@ -174,6 +177,19 @@ t_lklist	*lklSort(t_lklist *list, t_lklFuncCmp cmp);
 |* Returns the list
 \************************/
 
+t_lklist	*lklMap(t_lklist *list, t_lklFuncMapProt fnc, int do_free);
+/************************\
+|* Apply the function fnc to the entire list. The function is
+|* prototyped like "void *fnc(void *)".
+|*
+|* list		The t_lklist "object" to be destroyed
+|* fnc		The function to apply
+|* do_free	Set it different to 0 to free the mapped element
+|*
+|* Returns the list
+\************************/
+
+
 /********************************\
  **Builtin comparison functions**
 \********************************/
@@ -208,5 +224,31 @@ int		lklFloatCmp(void *a, void *b);
 |* Returns the difference between the two floats rounded
 \************************/
 
+
+/*****************************\
+ **Builtin mapping functions**
+\*****************************/
+
+void		*lklUpper(void *str, int do_free);
+/************************\
+|* Transform all lower case characters of the given string (as
+|* void *) in upper case characters.
+|*
+|* str		The string to convert
+|* do_free	Set it different to 0 to free the given string
+|*
+|* Returns a dup of the string uppercased
+\************************/
+
+void		*lklLower(void *str, int do_free);
+/************************\
+|* Transform all upper case characters of the given string (as
+|* void *) in lower case characters.
+|*
+|* str		The string to convert
+|* do_free	Set it different to 0 to free the given string
+|*
+|* Returns a dup of the string lowercased
+\************************/
 
 #endif /* !LIBLKL_H_ */
