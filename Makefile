@@ -5,7 +5,7 @@
 ## Login   <fantin.bibas@epitech.eu@epitech.net>
 ## 
 ## Started on  Mon Apr  3 14:21:15 2017 Fantin Bibas
-## Last update Mon Apr  3 21:55:05 2017 Fantin Bibas
+## Last update Tue Apr  4 16:00:19 2017 Fantin Bibas
 ##
 
 CC	=	gcc
@@ -29,7 +29,9 @@ SRCS	=	src/lklAppend.c		\
 		src/lklExtend.c		\
 		src/lklLast.c		\
 		src/lklLen.c		\
-		src/lklReverse.c
+		src/lklReverse.c	\
+		src/lklSort.c		\
+		src/lklSortFuncs.c
 
 OBJDIR	=	objs
 

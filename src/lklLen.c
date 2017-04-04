@@ -5,11 +5,25 @@
 ** Login   <fantin.bibas@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Apr  3 18:47:19 2017 Fantin Bibas
-** Last update Mon Apr  3 18:57:16 2017 Fantin Bibas
+** Last update Tue Apr  4 15:17:13 2017 Fantin Bibas
 */
 
 #include <stdlib.h>
 #include "liblkl.h"
+
+
+int		lklLenLkl(t_lklelem *elem)
+{
+  int		i;
+
+  i = 0;
+  while (elem != NULL)
+    {
+      elem = elem->next;
+      i++;
+    }
+  return (i);
+}
 
 int		lklLen(t_lklist *list)
 {

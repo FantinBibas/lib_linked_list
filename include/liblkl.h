@@ -5,7 +5,7 @@
 ** Login   <fantin.bibas@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Apr  3 13:30:17 2017 Fantin Bibas
-** Last update Mon Apr  3 21:51:43 2017 Fantin Bibas
+** Last update Tue Apr  4 15:59:20 2017 Fantin Bibas
 */
 
 #ifndef	LIBLKL_H_
@@ -18,9 +18,11 @@ typedef t_lklist	*(*t_lklFuncMod)(void *, t_lklist *);
 typedef void		*(*t_lklFuncElem)(int, t_lklist *);
 typedef void		**(*t_lklFuncElemPtr)(int, t_lklist *);
 typedef t_lklist	*(*t_lklFuncList)(t_lklist *);
-typedef t_lklist	*(*t_lklFuncExt)(t_lklist *, t_lklist *);
 typedef int		(*t_lklFunc)(t_lklist *);
+typedef t_lklist	*(*t_lklFuncExt)(t_lklist *, t_lklist *);
+typedef int		(*t_lklFuncCmp)(void *, void *);
 typedef void		(*t_lklFuncDest)(t_lklist *);
+typedef t_lklist	*(*t_lklFuncSort)(t_lklist *, t_lklFuncCmp);
 
 struct		s_lklelem
 {
@@ -40,6 +42,7 @@ struct			s_lklist
   t_lklFuncElem		delete;
   t_lklFuncExt		extend;
   t_lklFuncDest		destroy;
+  t_lklFuncSort		sort;
 };
 
 t_lklist	*lklAppend(void *elem, t_lklist *list);
@@ -63,6 +66,17 @@ void		*lklElem(int idx, t_lklist *list);
 /************************\
 |* Get an element in the list. If the index is negative it
 |* return the element at position listLen - index.
+|*
+|* idx		The index of the element to get
+|* list		The t_tklist
+|*
+|* Return NULL in case of problem, the element otherwise.
+\************************/
+
+void		*lklElemLkl(int idx, t_lklist *list);
+/************************\
+|* Get an element in the list as a t_lklelem. If the index
+|* is negative it return the element at position listLen - index.
 |*
 |* idx		The index of the element to get
 |* list		The t_tklist
@@ -97,6 +111,15 @@ int		lklLen(t_lklist *list);
 |* list		The t_tklist
 |*
 |* Return the size of the t_lklist or 0 if t_lklist is NULL.
+\************************/
+
+int		lklLenLkl(t_lklelem *elem);
+/************************\
+|* Get the size of a list given a start element.
+|*
+|* elem		The first element
+|*
+|* Return the size of the list or 0 if elem is NULL.
 \************************/
 
 t_lklist	*lklReverse(t_lklist *list);
@@ -139,5 +162,51 @@ void		lklDestroy(t_lklist *list);
 |*
 |* Returns nothing
 \************************/
+
+t_lklist	*lklSort(t_lklist *list, t_lklFuncCmp cmp);
+/************************\
+|* Sort a list given a comparison function (the function must
+|* be prototyped like "int cmp(void *, void *)".
+|*
+|* list		The t_lklist "object" to be destroyed
+|* cmp		The comparison function
+|*
+|* Returns the list
+\************************/
+
+/********************************\
+ **Builtin comparison functions**
+\********************************/
+
+int		lklStrCmp(void *a, void *b);
+/************************\
+|* Compare two string given as void *
+|*
+|* a		The first char *
+|* b		The second char *
+|*
+|* Returns the strcmp between the two strings
+\************************/
+
+int		lklIntCmp(void *a, void *b);
+/************************\
+|* Compare two integers given as void *
+|*
+|* a		The pointer to the first integer
+|* b		The pointer to the second integer
+|*
+|* Returns the difference between the two integers
+\************************/
+
+int		lklFloatCmp(void *a, void *b);
+/************************\
+|* Compare two floats given as void *
+|*
+|* a		The pointer to the first float
+|* b		The pointer to the second float
+|*
+|* Returns the difference between the two floats rounded
+\************************/
+
 
 #endif /* !LIBLKL_H_ */
